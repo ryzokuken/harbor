@@ -1,0 +1,46 @@
+h1 {
+  font-size: 4em;
+  color: #F44336;
+  text-align: center;
+  margin-top: -20px;
+}
+
+body {
+  border-top: 5px solid #D32F2F;
+  border-bottom: 5px solid #D32F2F;
+  box-sizing: border-box;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.container, #form-login {
+  display: flex;
+  flex-direction: column;
+}
+
+#form-login input, button {
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1.2em;
+}
+
+button {
+  background-color: #F44336;
+  color: white;
+  border: 2px solid #E53935;
+}
+
+label {
+  text-transform: capitalize;
+  font-weight: bolder;
+}
+
+button {
+  text-transform: uppercase;
+}

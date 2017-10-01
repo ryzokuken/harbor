@@ -1,0 +1,22 @@
+{
+  "name": "harbor",
+  "version": "1.0.0",
+  "description": "A smarter cyberoam client built on web technologies",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryzokuken/harbor.git"
+  },
+  "author": "Ujjwal Sharma <usharma1998@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ryzokuken/harbor/issues"
+  },
+  "homepage": "https://github.com/ryzokuken/harbor#readme",
+  "devDependencies": {
+    "electron": "^1.7.8"
+  }
+}
