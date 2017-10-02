@@ -18,5 +18,6 @@
   "homepage": "https://github.com/ryzokuken/harbor#readme",
   "devDependencies": {
     "electron": "^1.7.8"
-  }
+  },
+  "productName": "Harbor"
 }
