@@ -1,0 +1,38 @@
+h1 {
+  font-size: 3em;
+  text-align: center;
+  margin-top: -20px;
+}
+
+h2 {
+  font-size: 2em;
+  text-align: center;
+}
+
+body {
+  border-top: 5px solid #D32F2F;
+  border-bottom: 5px solid #D32F2F;
+  box-sizing: border-box;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  background-color: #F44336;
+  color: white;
+  border: 2px solid #E53935;
+  text-transform: uppercase;
+  padding: 10px;
+  font-size: 1.2em;
+}

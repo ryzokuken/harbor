@@ -1,4 +1,5 @@
 const {app, BrowserWindow, Menu, ipcMain: ipc} = require('electron');
+const cyberoam = require('./cyberoam');
 
 let mainWindow;
 let state = {};
@@ -28,6 +29,27 @@ app.on('ready', () => {
   Menu.setApplicationMenu(menu);
 });
 
-ipc.on('login', (evt, data) => {
-  console.log(data);
+ipc.on('login', (evt, {username, password}) => {
+  state.username = username;
+  cyberoam.login(username, password)
+    .then(() => {
+      mainWindow.loadURL(`file://${__dirname}/logout.html`);
+    })
+    .catch(errorMessage => {
+      console.error(errorMessage);
+    });
+});
+
+ipc.on('request-username', () => {
+  mainWindow.webContents.send('username', state.username);
+});
+
+ipc.on('logout', () => {
+  cyberoam.logout(state.username)
+    .then(() => {
+      mainWindow.loadURL(`file://${__dirname}/login.html`);
+    })
+    .catch(errorMessage => {
+      console.error(errorMessage);
+    });
 });
