@@ -53,6 +53,7 @@ ipc.on('request-username', () => {
 });
 
 ipc.on('logout', () => {
+  clearInterval(state.interval);
   cyberoam.logout(state.username)
     .then(() => {
       mainWindow.loadURL(`file://${__dirname}/login.html`);
