@@ -29,15 +29,23 @@ app.on('ready', () => {
   Menu.setApplicationMenu(menu);
 });
 
-ipc.on('login', (evt, {username, password}) => {
-  state.username = username;
+function login(username, password) {
   cyberoam.login(username, password)
     .then(() => {
       mainWindow.loadURL(`file://${__dirname}/logout.html`);
     })
     .catch(errorMessage => {
+      mainWindow.loadURL(`file://${__dirname}/login.html`);
       console.error(errorMessage);
     });
+}
+
+ipc.on('login', (evt, {username, password}) => {
+  state.username = username;
+  login(username, password);
+  state.interval = setInterval(() => {
+    login(username, password);
+  }, 120 * 1000);
 });
 
 ipc.on('request-username', () => {
