@@ -24,22 +24,19 @@ body {
   flex-direction: column;
 }
 
-#form-login input, button {
+#form-login input {
   margin: 10px 0;
   padding: 10px;
   font-size: 1.2em;
 }
 
-button {
+input[type="submit"] {
   background-color: #F44336;
   color: white;
   border: 2px solid #E53935;
+  text-transform: uppercase;
 }
 
 label {
   font-weight: bolder;
-}
-
-button {
-  text-transform: uppercase;
 }
