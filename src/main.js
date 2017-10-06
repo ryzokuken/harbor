@@ -1,4 +1,4 @@
-const {app, BrowserWindow, Menu, ipcMain: ipc} = require('electron');
+const {app, BrowserWindow, Menu, ipcMain: ipc, Notification} = require('electron');
 const cyberoam = require('./cyberoam');
 
 let mainWindow;
@@ -46,6 +46,13 @@ function login(username, password, onSuccess) {
 ipc.on('login', (evt, {username, password}) => {
   state.username = username;
   login(username, password, () => {
+    if (Notification.isSupported()) {
+      const notification = new Notification({
+        title: 'Success',
+        body: `Successfully logged into cyberoam as ${username}`,
+      });
+      notification.show();
+    }
     state.interval = setInterval(() => {
       login(username, password);
     }, 60 * 1000);
