@@ -45,7 +45,7 @@ ipc.on('login', (evt, {username, password}) => {
   login(username, password);
   state.interval = setInterval(() => {
     login(username, password);
-  }, 120 * 1000);
+  }, 60 * 1000);
 });
 
 ipc.on('request-username', () => {
