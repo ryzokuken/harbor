@@ -49,4 +49,24 @@ const logout = (username) => {
   });
 };
 
-module.exports = {login, logout};
+const checkLiveStatus = (username) => {
+  const options = {
+    method: 'GET',
+    url: 'http://172.16.68.6:8090/live',
+    qs: {mode: '192', username}
+  };
+
+  return new Promise((resolve, reject) => {
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+
+      if (body.includes('ack')) {
+        resolve();
+      } else {
+        reject();
+      }
+    });
+  });
+};
+
+module.exports = {login, logout, checkLiveStatus};

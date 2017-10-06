@@ -55,8 +55,10 @@ ipc.on('login', (evt, {username, password}) => {
       notification.show();
     }
     state.interval = setInterval(() => {
-      login(username, password);
-    }, 60 * 1000);
+      cyberoam.checkLiveStatus(username).catch(() => {
+        login(username, password);
+      });
+    }, 180 * 1000);
   });
 });
 
