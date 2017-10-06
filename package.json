@@ -1,6 +1,6 @@
 {
   "name": "harbor",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "description": "A smarter cyberoam client built on web technologies",
   "main": "src/main.js",
   "scripts": {
