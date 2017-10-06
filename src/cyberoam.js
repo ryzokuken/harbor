@@ -1,4 +1,5 @@
-var request = require('request');
+const request = require('request');
+const {parseString} = require('xml2js');
 
 const login = (username, password) => {
   var options = {
@@ -17,7 +18,9 @@ const login = (username, password) => {
       if (body.includes('You have successfully logged into JIIT Internet Server.')) {
         resolve(body);
       } else {
-        reject(body);
+        parseString(body, (err, result) => {
+          reject(result.requestresponse.message[0]);
+        });
       }
     });
   });

@@ -20,7 +20,10 @@
     "electron": "^1.7.8"
   },
   "dependencies": {
-    "request": "^2.83.0"
+    "jquery": "^3.2.1",
+    "request": "^2.83.0",
+    "toastr": "^2.1.2",
+    "xml2js": "^0.4.19"
   },
   "productName": "Harbor"
 }

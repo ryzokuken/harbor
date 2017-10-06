@@ -33,13 +33,14 @@ function login(username, password, onSuccess) {
   cyberoam.login(username, password)
     .then(() => {
       mainWindow.loadURL(`file://${__dirname}/logout.html`);
+      state.lastErrorMessage = undefined;
       if (onSuccess) {
         onSuccess();
       }
     })
     .catch(errorMessage => {
       mainWindow.loadURL(`file://${__dirname}/login.html`);
-      console.error(errorMessage);
+      state.lastErrorMessage = errorMessage;
     });
 }
 
@@ -73,3 +74,9 @@ ipc.on('logout', () => {
       console.error(errorMessage);
     });
 });
+
+ipc.on('request-error', () => {
+  if (state.lastErrorMessage) {
+    mainWindow.webContents.send('error', state.lastErrorMessage);
+  }
+})
