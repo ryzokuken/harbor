@@ -4,7 +4,9 @@
   "description": "A smarter cyberoam client built on web technologies",
   "main": "src/main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "repository": {
     "type": "git",
@@ -17,7 +19,8 @@
   },
   "homepage": "https://github.com/ryzokuken/harbor#readme",
   "devDependencies": {
-    "electron": "^1.7.8"
+    "electron": "^1.7.8",
+    "electron-builder": "^19.34.2"
   },
   "dependencies": {
     "jquery": "^3.2.1",
