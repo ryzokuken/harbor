@@ -1,12 +1,15 @@
 const {app, BrowserWindow, Menu, ipcMain: ipc, Notification} = require('electron');
 const cyberoam = require('../utils/cyberoam');
 
+const state = {};
 let mainWindow;
-let state = {};
+
+const LOGIN_FILE_PATH = `file://${__dirname}/../public/login/index.html`;
+const LOGOUT_FILE_PATH = `file://${__dirname}/../public/logout/index.html`;
 
 app.on('ready', () => {
   mainWindow = new BrowserWindow({width: 800, height: 600});
-  mainWindow.loadURL(`file://${__dirname}/../public/login/index.html`);
+  mainWindow.loadURL(LOGIN_FILE_PATH);
   if (process.env.NODE_ENV === 'dev') {
 	  mainWindow.webContents.openDevTools();
   }
@@ -41,14 +44,14 @@ app.on('window-all-closed', () => {
 function login(username, password, onSuccess) {
   cyberoam.login(username, password)
     .then(() => {
-      mainWindow.loadURL(`file://${__dirname}/../public/logout/index.html`);
+      mainWindow.loadURL(LOGOUT_FILE_PATH);
       state.lastErrorMessage = undefined;
       if (onSuccess) {
         onSuccess();
       }
     })
     .catch(errorMessage => {
-      mainWindow.loadURL(`file://${__dirname}/../public/login/index.html`);
+      mainWindow.loadURL(LOGIN_FILE_PATH);
       state.lastErrorMessage = errorMessage;
     });
 }
@@ -79,7 +82,7 @@ ipc.on('logout', () => {
   clearInterval(state.interval);
   cyberoam.logout(state.username)
     .then(() => {
-      mainWindow.loadURL(`file://${__dirname}/login.html`);
+      mainWindow.loadURL(LOGIN_FILE_PATH);
     })
     .catch(errorMessage => {
       console.error(errorMessage);
