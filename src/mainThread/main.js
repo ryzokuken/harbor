@@ -1,12 +1,12 @@
 const {app, BrowserWindow, Menu, ipcMain: ipc, Notification} = require('electron');
-const cyberoam = require('./cyberoam');
+const cyberoam = require('../utils/cyberoam');
 
 let mainWindow;
 let state = {};
 
 app.on('ready', () => {
   mainWindow = new BrowserWindow({width: 800, height: 600});
-  mainWindow.loadURL(`file://${__dirname}/login.html`);
+  mainWindow.loadURL(`file://${__dirname}/../public/login/index.html`);
   if (process.env.NODE_ENV === 'dev') {
 	  mainWindow.webContents.openDevTools();
   }
@@ -41,14 +41,14 @@ app.on('window-all-closed', () => {
 function login(username, password, onSuccess) {
   cyberoam.login(username, password)
     .then(() => {
-      mainWindow.loadURL(`file://${__dirname}/logout.html`);
+      mainWindow.loadURL(`file://${__dirname}/../public/logout/index.html`);
       state.lastErrorMessage = undefined;
       if (onSuccess) {
         onSuccess();
       }
     })
     .catch(errorMessage => {
-      mainWindow.loadURL(`file://${__dirname}/login.html`);
+      mainWindow.loadURL(`file://${__dirname}/../public/login/index.html`);
       state.lastErrorMessage = errorMessage;
     });
 }
