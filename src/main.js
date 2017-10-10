@@ -21,11 +21,11 @@ app.on('ready', () => {
     }, {
       label: 'Debug',
       click: () => { mainWindow.toggleDevTools() },
-      accelerator: 'Cmd+Alt+I'
+      accelerator: 'CommandOrControl+Alt+I'
     }, {
       label: 'Quit',
       click: () => { app.quit() },
-      accelerator: 'Cmd+Q'
+      accelerator: 'CommandOrControl+Q'
     }]
   }];
   const menu = Menu.buildFromTemplate(menuTemplate);
