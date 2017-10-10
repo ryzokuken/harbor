@@ -7,6 +7,9 @@ let state = {};
 app.on('ready', () => {
   mainWindow = new BrowserWindow({width: 800, height: 600});
   mainWindow.loadURL(`file://${__dirname}/login.html`);
+  if (process.env.NODE_ENV === 'dev') {
+	  mainWindow.webContents.openDevTools();
+  }
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
@@ -81,4 +84,4 @@ ipc.on('request-error', () => {
   if (state.lastErrorMessage) {
     mainWindow.webContents.send('error', state.lastErrorMessage);
   }
-})
+});
