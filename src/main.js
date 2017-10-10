@@ -7,6 +7,9 @@ let state = {};
 app.on('ready', () => {
   mainWindow = new BrowserWindow({width: 800, height: 600});
   mainWindow.loadURL(`file://${__dirname}/login.html`);
+  if (process.env.NODE_ENV === 'dev') {
+	  mainWindow.webContents.openDevTools();
+  }
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
@@ -18,15 +21,21 @@ app.on('ready', () => {
     }, {
       label: 'Debug',
       click: () => { mainWindow.toggleDevTools() },
-      accelerator: 'Cmd+Alt+I'
+      accelerator: 'CommandOrControl+Alt+I'
     }, {
       label: 'Quit',
       click: () => { app.quit() },
-      accelerator: 'Cmd+Q'
+      accelerator: 'CommandOrControl+Q'
     }]
   }];
   const menu = Menu.buildFromTemplate(menuTemplate);
   Menu.setApplicationMenu(menu);
+});
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
 });
 
 function login(username, password, onSuccess) {
@@ -81,4 +90,4 @@ ipc.on('request-error', () => {
   if (state.lastErrorMessage) {
     mainWindow.webContents.send('error', state.lastErrorMessage);
   }
-})
+});

@@ -2,7 +2,7 @@ const request = require('request');
 const {parseString} = require('xml2js');
 
 const login = (username, password) => {
-  var options = {
+  const options = {
     method: 'POST',
     url: 'http://172.16.68.6:8090/login.xml',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
@@ -24,10 +24,10 @@ const login = (username, password) => {
       }
     });
   });
-}
+};
 
 const logout = (username) => {
-  var options = {
+  const options = {
     method: 'POST',
     url: 'http://172.16.68.6:8090/login.xml',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },

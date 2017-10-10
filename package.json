@@ -4,7 +4,7 @@
   "description": "A smarter cyberoam client built on web technologies",
   "main": "src/main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "NODE_ENV=dev electron .",
     "pack": "electron-builder --dir",
     "dist": "electron-builder"
   },

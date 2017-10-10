@@ -14,4 +14,4 @@ ipc.send('request-error');
 
 ipc.on('error', (evt, msg) => {
   toastr.error(msg);
-})
+});
