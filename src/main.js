@@ -32,6 +32,12 @@ app.on('ready', () => {
   Menu.setApplicationMenu(menu);
 });
 
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
+
 function login(username, password, onSuccess) {
   cyberoam.login(username, password)
     .then(() => {
