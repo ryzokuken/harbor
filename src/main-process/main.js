@@ -5,8 +5,8 @@ let mainWindow;
 
 const LOGIN_FILE_PATH = `file://${__dirname}/../public/login/index.html`;
 
-app.on('ready', () => {
-  mainWindow = new BrowserWindow({width: 800, height: 600});
+function init() {
+  mainWindow = new BrowserWindow({width: 800, height: 600, backgroundColor: '#fff'});
   mainWindow.loadURL(LOGIN_FILE_PATH);
   mainWindow.on('closed', () => {
     mainWindow = null;
@@ -29,12 +29,14 @@ app.on('ready', () => {
   const menu = Menu.buildFromTemplate(menuTemplate);
   Menu.setApplicationMenu(menu);
   require('./ipc/auth')(mainWindow, state);
-});
+}
 
+app.on('ready', init);
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
 });
+app.on('activate', init);
 
 
