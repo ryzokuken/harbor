@@ -1,7 +1,6 @@
 const { app, BrowserWindow, Menu } = require('electron');
 const authIpc = require('./ipc/auth');
 
-const state = {};
 let mainWindow;
 
 const LOGIN_FILE_PATH = `file://${__dirname}/../public/login/index.html`;
@@ -29,7 +28,7 @@ function init() {
   }];
   const menu = Menu.buildFromTemplate(menuTemplate);
   Menu.setApplicationMenu(menu);
-  authIpc(mainWindow, state);
+  authIpc(mainWindow);
 }
 
 app.on('ready', init);
