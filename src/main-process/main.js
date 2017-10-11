@@ -1,4 +1,5 @@
 const { app, BrowserWindow, Menu } = require('electron');
+const authIpc = require('./ipc/auth');
 
 const state = {};
 let mainWindow;
@@ -6,7 +7,7 @@ let mainWindow;
 const LOGIN_FILE_PATH = `file://${__dirname}/../public/login/index.html`;
 
 function init() {
-  mainWindow = new BrowserWindow({width: 800, height: 600, backgroundColor: '#fff'});
+  mainWindow = new BrowserWindow({ width: 800, height: 600, backgroundColor: '#fff' });
   mainWindow.loadURL(LOGIN_FILE_PATH);
   mainWindow.on('closed', () => {
     mainWindow = null;
@@ -15,20 +16,20 @@ function init() {
   const menuTemplate = [{
     label: app.getName(),
     submenu: [{
-      label: `About ${app.getName()}`
+      label: `About ${app.getName()}`,
     }, {
       label: 'Debug',
-      click: () => { mainWindow.toggleDevTools() },
-      accelerator: 'CommandOrControl+Alt+I'
+      click: () => { mainWindow.toggleDevTools(); },
+      accelerator: 'CommandOrControl+Alt+I',
     }, {
       label: 'Quit',
-      click: () => { app.quit() },
-      accelerator: 'CommandOrControl+Q'
-    }]
+      click: () => { app.quit(); },
+      accelerator: 'CommandOrControl+Q',
+    }],
   }];
   const menu = Menu.buildFromTemplate(menuTemplate);
   Menu.setApplicationMenu(menu);
-  require('./ipc/auth')(mainWindow, state);
+  authIpc(mainWindow, state);
 }
 
 app.on('ready', init);
@@ -38,5 +39,3 @@ app.on('window-all-closed', () => {
   }
 });
 app.on('activate', init);
-
-

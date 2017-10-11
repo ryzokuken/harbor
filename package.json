@@ -6,7 +6,9 @@
   "scripts": {
     "start": "NODE_ENV=dev electron .",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "lint": "eslint .",
+    "precommit": "yarn lint"
   },
   "repository": {
     "type": "git",
@@ -20,7 +22,11 @@
   "homepage": "https://github.com/ryzokuken/harbor#readme",
   "devDependencies": {
     "electron": "^1.7.8",
-    "electron-builder": "^19.34.2"
+    "electron-builder": "^19.34.2",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb-base": "^12.0.2",
+    "eslint-plugin-import": "^2.7.0",
+    "husky": "^0.14.3"
   },
   "dependencies": {
     "jquery": "^3.2.1",

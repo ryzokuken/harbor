@@ -1,4 +1,4 @@
-const {ipcRenderer: ipc} = require('electron');
+const { ipcRenderer: ipc } = require('electron');
 
 ipc.send('request-username');
 

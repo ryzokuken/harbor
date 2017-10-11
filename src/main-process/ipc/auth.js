@@ -14,13 +14,13 @@ module.exports = (mainWindow, state) => {
           onSuccess();
         }
       })
-      .catch(errorMessage => {
+      .catch((errorMessage) => {
         mainWindow.loadURL(LOGIN_FILE_PATH);
         state.lastErrorMessage = errorMessage;
       });
   }
 
-  ipc.on('login', (evt, {username, password}) => {
+  ipc.on('login', (evt, { username, password }) => {
     state.username = username;
     login(username, password, () => {
       if (Notification.isSupported()) {
@@ -48,7 +48,8 @@ module.exports = (mainWindow, state) => {
       .then(() => {
         mainWindow.loadURL(LOGIN_FILE_PATH);
       })
-      .catch(errorMessage => {
+      .catch((errorMessage) => {
+        // TODO: Handle this error gracefully as well (will there be an error?)
         console.error(errorMessage);
       });
   });
