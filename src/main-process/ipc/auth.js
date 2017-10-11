@@ -3,6 +3,7 @@ const cyberoam = require('../../utils/cyberoam');
 
 const LOGIN_FILE_PATH = `file://${__dirname}/../../public/login/index.html`;
 const LOGOUT_FILE_PATH = `file://${__dirname}/../../public/logout/index.html`;
+
 const state = {};
 
 module.exports = (mainWindow) => {

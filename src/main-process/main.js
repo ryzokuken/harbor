@@ -28,7 +28,11 @@ function init() {
   }];
   const menu = Menu.buildFromTemplate(menuTemplate);
   Menu.setApplicationMenu(menu);
+<<<<<<< HEAD
   authIpc(mainWindow);
+=======
+  require('./ipc/auth')(mainWindow);
+>>>>>>> minor fixes
 }
 
 app.on('ready', init);
