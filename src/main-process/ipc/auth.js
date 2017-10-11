@@ -4,7 +4,9 @@ const cyberoam = require('../../utils/cyberoam');
 const LOGIN_FILE_PATH = `file://${__dirname}/../../public/login/index.html`;
 const LOGOUT_FILE_PATH = `file://${__dirname}/../../public/logout/index.html`;
 
-module.exports = (mainWindow, state) => {
+const state = {};
+
+module.exports = (mainWindow) => {
   function login(username, password, onSuccess) {
     cyberoam.login(username, password)
       .then(() => {
