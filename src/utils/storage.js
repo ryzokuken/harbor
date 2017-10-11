@@ -1,4 +1,5 @@
 const Store = require('electron-store');
+
 const store = new Store();
 
 function setLastUsedCredentials({ username, password }) {
@@ -10,12 +11,12 @@ function getLastUsedCredentials() {
 }
 
 function addCredentials({ username, password, label }) {
-  label = label || username;
-  if(!store.has('credentials-array')) {
-    store.set('credentials-array', { label: { username, password } });
+  const lb = label || username;
+  if (!store.has('credentials-array')) {
+    store.set('credentials-array', { lb: { username, password } });
   } else {
     const credentials = store.get('credentials-array');
-    credentials[label] = { username, password };
+    credentials[lb] = { username, password };
     store.set('credentials-array');
   }
 }
@@ -25,11 +26,11 @@ function getAllCredentials() {
 }
 
 function deleteCredential(label) {
-  if(!store.has('credentials-array'))
-    return;
-  const credentials = store.get('credentials-array');
-  credentials[label] = undefined;
-  return store.set('credentials-array', credentials);
+  if (store.has('credentials-array')) {
+    const credentials = store.get('credentials-array');
+    credentials[label] = undefined;
+    store.set('credentials-array', credentials);
+  }
 }
 
 
