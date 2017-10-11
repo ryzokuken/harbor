@@ -1,4 +1,4 @@
-const {ipcRenderer: ipc} = require('electron');
+const { ipcRenderer: ipc } = require('electron');
 const toastr = require('toastr');
 
 const spinnerHTML = '<div class="spinner"><div class="cube1"></div><div class="cube2"></div></div>';
@@ -6,7 +6,7 @@ const spinnerHTML = '<div class="spinner"><div class="cube1"></div><div class="c
 document.getElementById('btn-login').addEventListener('click', () => {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
-  ipc.send('login', {username, password});
+  ipc.send('login', { username, password });
   document.getElementsByClassName('container')[0].innerHTML = spinnerHTML;
 });
 

@@ -1,16 +1,16 @@
 const request = require('request');
-const {parseString} = require('xml2js');
+const { parseString } = require('xml2js');
 
 const login = (username, password) => {
   const options = {
     method: 'POST',
     url: 'http://172.16.68.6:8090/login.xml',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
-    form: {mode: '191', username, password}
+    form: { mode: '191', username, password },
   };
 
   return new Promise((resolve, reject) => {
-    request(options, function (error, response, body) {
+    request(options, (error, response, body) => {
       if (error) {
         throw new Error(error);
       }
@@ -31,11 +31,11 @@ const logout = (username) => {
     method: 'POST',
     url: 'http://172.16.68.6:8090/login.xml',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
-    form: {mode: '193', username}
+    form: { mode: '193', username },
   };
 
   return new Promise((resolve, reject) => {
-    request(options, function (error, response, body) {
+    request(options, (error, response, body) => {
       if (error) {
         throw new Error(error);
       }
@@ -53,11 +53,11 @@ const checkLiveStatus = (username) => {
   const options = {
     method: 'GET',
     url: 'http://172.16.68.6:8090/live',
-    qs: {mode: '192', username}
+    qs: { mode: '192', username },
   };
 
   return new Promise((resolve, reject) => {
-    request(options, function (error, response, body) {
+    request(options, (error, response, body) => {
       if (error) throw new Error(error);
 
       if (body.includes('ack')) {
@@ -69,4 +69,4 @@ const checkLiveStatus = (username) => {
   });
 };
 
-module.exports = {login, logout, checkLiveStatus};
+module.exports = { login, logout, checkLiveStatus };
