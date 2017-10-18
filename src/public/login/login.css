@@ -1,6 +1,6 @@
 h1 {
   font-size: 4em;
-  color: #F44336;
+  color: #aa2e25;
   text-align: center;
   margin-top: -20px;
 }
@@ -31,7 +31,7 @@ body {
 }
 
 input[type="submit"] {
-  background-color: #F44336;
+  background-color: #aa2e25;
   color: white;
   border: 2px solid #E53935;
   text-transform: uppercase;
