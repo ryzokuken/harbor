@@ -1,8 +1,12 @@
 h1 {
   font-size: 4em;
-  color: #F44336;
+  color: red;
   text-align: center;
   margin-top: -20px;
+}
+#butt{
+  width: 100px;
+  height:auto;
 }
 
 body {
@@ -17,24 +21,25 @@ body {
   font-size: 18px;
   margin: 0;
   font-family: sans-serif;
+  background-color: dimgrey;
 }
 
 .container, #form-login {
   display: flex;
   flex-direction: column;
 }
-
-#form-login input {
-  margin: 10px 0;
-  padding: 10px;
-  font-size: 1.2em;
+form{
+  width:50%;
+  margin:auto;
 }
 
+
 input[type="submit"] {
-  background-color: #F44336;
-  color: white;
-  border: 2px solid #E53935;
+  background-color: dimgrey;
+  color:lightskyblue;
+
   text-transform: uppercase;
+
 }
 
 label {
