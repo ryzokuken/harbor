@@ -30,17 +30,18 @@
 </template>
 
 <script>
-  import SystemInformation from './LandingPage/SystemInformation'
+  import SystemInformation from './LandingPage/SystemInformation';
 
   export default {
     name: 'landing-page',
     components: { SystemInformation },
     methods: {
-      open (link) {
-        require('electron').shell.openExternal(link)
-      }
-    }
-  }
+      open(link) {
+        /* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
+        require('electron').shell.openExternal(link);
+      },
+    },
+  };
 </script>
 
 <style>

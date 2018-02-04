@@ -24,15 +24,15 @@
 
 <script>
   export default {
-    data () {
+    data() {
       return {
         electron: process.versions['atom-shell'],
         node: process.versions.node,
         platform: require('os').platform(),
-        vue: require('vue/package.json').version
-      }
-    }
-  }
+        vue: require('vue/package.json').version,
+      };
+    },
+  };
 </script>
 
 <style scoped>
