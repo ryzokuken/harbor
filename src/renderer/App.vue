@@ -1,14 +1,24 @@
 <template>
-  <login></login>
+  <div>
+    <logout v-if="loggedIn"></logout>
+    <login v-e></login>
+  </div>
 </template>
 
 <script>
   import Login from '@/components/Login';
+  import Logout from '@/components/Logout';
 
   export default {
     name: 'harbor',
     components: {
       Login,
+      Logout,
+    },
+    data() {
+      return {
+        loggedIn: false,
+      };
     },
   };
 </script>
