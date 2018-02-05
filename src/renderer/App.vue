@@ -1,7 +1,7 @@
 <template>
   <div>
-    <logout v-if="loggedIn"></logout>
-    <login v-e></login>
+    <logout v-if="loggedIn" @logout="handleLogout"></logout>
+    <login v-else @login="handleLogin"></login>
   </div>
 </template>
 
@@ -19,6 +19,14 @@
       return {
         loggedIn: false,
       };
+    },
+    methods: {
+      handleLogin() {
+        this.loggedIn = true;
+      },
+      handleLogout() {
+        this.loggedIn = false;
+      },
     },
   };
 </script>
