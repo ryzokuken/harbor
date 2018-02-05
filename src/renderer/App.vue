@@ -57,6 +57,15 @@
     outline: none;
   }
 
+  input[type=submit] {
+    transition: all 0.2s ease-in-out;
+  }
+
+  input[type=submit]:hover {
+    color: #4BBD6C;
+    background: white;
+  }
+
   ::placeholder {
     color: rgba(256, 256, 256, 0.3);
   }
