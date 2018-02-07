@@ -6,9 +6,6 @@
 </template>
 
 <script>
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
-import { ipcRenderer as ipc } from 'electron';
-
 import Login from '@/components/Login';
 import Logout from '@/components/Logout';
 
@@ -18,17 +15,13 @@ export default {
     Login,
     Logout,
   },
-  data() {
-    return {
-      loggedIn: false,
-    };
-  },
+  props: ['loggedIn'],
   methods: {
     handleLogin(data) {
-      ipc.send('login', data);
+      this.$emit('login', data);
     },
     handleLogout() {
-      this.loggedIn = false;
+      this.$emit('logout');
     },
   },
 };
