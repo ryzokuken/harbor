@@ -79,7 +79,7 @@ function logout(username) {
       }
     })
     .catch((err) => {
-      console.error(err);
+      mainWindow.webContents.send('logout-failure', err);
     });
 }
 

@@ -45,3 +45,7 @@ ipc.on('logged-out', () => {
 ipc.on('login-failure', (event, err) => {
   vm.$notify(err);
 });
+
+ipc.on('logout-failure', (event, err) => {
+  vm.$notify(err);
+});
