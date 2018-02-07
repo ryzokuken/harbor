@@ -1,6 +1,6 @@
 {
   "name": "harbor",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-alpha.1",
   "author": "Ujjwal Sharma <usharma1998@gmail.com>",
   "description": "A cyberoam client built on web technologies",
   "license": "MIT",
