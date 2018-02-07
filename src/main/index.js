@@ -59,7 +59,6 @@ function login(username, password) {
           login(username, password);
         });
       }, 180 * 1000);
-      console.log(liveInterval);
       mainWindow.webContents.send('logged-in', username);
     })
     .catch((err) => {
@@ -67,7 +66,26 @@ function login(username, password) {
     });
 }
 
+function logout(username) {
+  cyberoam
+    .logout(username)
+    .then(() => {
+      if (liveInterval !== undefined) {
+        clearInterval(liveInterval);
+        liveInterval = undefined;
+        mainWindow.webContents.send('logged-out');
+      } else {
+        throw Error('Live interval not properly set');
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
 ipc.on('login', (event, { username, password }) => login(username, password));
+
+ipc.on('logout', (event, username) => logout(username));
 
 /**
  * Auto Updater

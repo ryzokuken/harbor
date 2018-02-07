@@ -20,7 +20,7 @@ const vm = new Vue({
       ipc.send('login', data);
     },
     handleLogout() {
-      this.loggedIn = false;
+      ipc.send('logout', this.username);
     },
   },
 }).$mount('#app');
@@ -28,4 +28,13 @@ const vm = new Vue({
 ipc.on('logged-in', (event, username) => {
   vm.loggedIn = true;
   vm.username = username;
+});
+
+ipc.on('logged-out', () => {
+  if (vm.username) {
+    vm.loggedIn = false;
+    vm.username = undefined;
+  } else {
+    throw Error('Username not properly set');
+  }
 });
