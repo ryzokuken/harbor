@@ -2,6 +2,7 @@
   <div>
     <logout v-if="loggedIn" :username="username" @logout="handleLogout"></logout>
     <login v-else @login="handleLogin"></login>
+    <notifications classes="notification" />
   </div>
 </template>
 
@@ -39,11 +40,7 @@ form {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(
-    to right,
-    #00b09b,
-    #96c93d
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #00b09b, #96c93d);
 }
 
 input {
@@ -68,5 +65,17 @@ input[type='submit']:hover {
 
 ::placeholder {
   color: rgba(256, 256, 256, 0.3);
+}
+
+.notification {
+  padding: 10px;
+  margin: 10px 10px 0;
+
+  font-size: 18px;
+  font-family: sans-serif;
+  color: white;
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 5px;
 }
 </style>

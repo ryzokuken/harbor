@@ -62,7 +62,7 @@ function login(username, password) {
       mainWindow.webContents.send('logged-in', username);
     })
     .catch((err) => {
-      console.error(err);
+      mainWindow.webContents.send('login-failure', err);
     });
 }
 

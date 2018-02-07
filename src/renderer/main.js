@@ -2,9 +2,12 @@
 import { ipcRenderer as ipc } from 'electron';
 import Vue from 'vue';
 
+import Notifications from 'vue-notification';
+
 import App from './App';
 
 Vue.config.productionTip = false;
+Vue.use(Notifications);
 
 /* eslint-disable no-new */
 const vm = new Vue({
@@ -37,4 +40,8 @@ ipc.on('logged-out', () => {
   } else {
     throw Error('Username not properly set');
   }
+});
+
+ipc.on('login-failure', (event, err) => {
+  vm.$notify(err);
 });
