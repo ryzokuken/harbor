@@ -1,6 +1,6 @@
 <template>
   <div>
-    <logout v-if="loggedIn" @logout="handleLogout"></logout>
+    <logout v-if="loggedIn" :username="username" @logout="handleLogout"></logout>
     <login v-else @login="handleLogin"></login>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
     Login,
     Logout,
   },
-  props: ['loggedIn'],
+  props: ['loggedIn', 'username'],
   methods: {
     handleLogin(data) {
       this.$emit('login', data);

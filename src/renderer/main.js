@@ -9,9 +9,11 @@ Vue.config.productionTip = false;
 /* eslint-disable no-new */
 const vm = new Vue({
   components: { App },
-  template: '<App :loggedIn="loggedIn" @login="handleLogin" @logout="handleLogout" />',
+  template:
+    '<App :loggedIn="loggedIn" :username="username" @login="handleLogin" @logout="handleLogout" />',
   data: {
     loggedIn: false,
+    username: undefined,
   },
   methods: {
     handleLogin(data) {
@@ -24,6 +26,6 @@ const vm = new Vue({
 }).$mount('#app');
 
 ipc.on('logged-in', (event, username) => {
-  console.log(username);
   vm.loggedIn = true;
+  vm.username = username;
 });
