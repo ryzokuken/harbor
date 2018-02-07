@@ -1,4 +1,7 @@
 import { app, BrowserWindow, ipcMain as ipc } from 'electron'; // eslint-disable-line
+import Cyberoam from 'cyberoam';
+
+// HANDLING ELECTRON
 
 let mainWindow;
 const winURL =
@@ -38,9 +41,33 @@ app.on('activate', () => {
   }
 });
 
-ipc.on('login', (event, { username, password }) => {
-  console.log(username, password);
-});
+// HANDLING CYBEROAM
+
+let liveInterval;
+const cyberoam = new Cyberoam();
+
+function live(username, callback) {
+  cyberoam.checkLiveStatus(username).catch(callback);
+}
+
+function login(username, password) {
+  cyberoam
+    .login(username, password)
+    .then(() => {
+      liveInterval = setInterval(() => {
+        live(username, () => {
+          login(username, password);
+        });
+      }, 180 * 1000);
+      console.log(liveInterval);
+      mainWindow.webContents.send('logged-in', username);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
+ipc.on('login', (event, { username, password }) => login(username, password));
 
 /**
  * Auto Updater

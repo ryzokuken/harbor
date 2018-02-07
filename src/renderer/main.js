@@ -7,7 +7,7 @@ import App from './App';
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
-new Vue({
+const vm = new Vue({
   components: { App },
   template: '<App :loggedIn="loggedIn" @login="handleLogin" @logout="handleLogout" />',
   data: {
@@ -22,3 +22,8 @@ new Vue({
     },
   },
 }).$mount('#app');
+
+ipc.on('logged-in', (event, username) => {
+  console.log(username);
+  vm.loggedIn = true;
+});
