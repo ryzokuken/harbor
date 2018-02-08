@@ -1,8 +1,4 @@
-version: 0.1.{build}
-
-branches:
-  only:
-    - master
+skip_non_tags: true
 
 image: Visual Studio 2017
 platform:
@@ -27,3 +23,7 @@ build_script:
   - yarn build
 
 test: off
+
+artifacts:
+  - path: 'dist\*.exe'
+  - path: 'dist\latest.yml'
