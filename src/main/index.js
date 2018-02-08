@@ -136,7 +136,13 @@ async function live(username, callback) {
   try {
     await cyberoam.checkLiveStatus(username);
   } catch (err) {
-    callback();
+    if (err.includes('Could not reach')) {
+      mainWindow.webContents.send('disconnected');
+      clearInterval(liveInterval);
+      liveInterval = undefined;
+    } else {
+      callback();
+    }
   }
 }
 
@@ -166,6 +172,9 @@ async function logout(username) {
     }
   } catch (err) {
     mainWindow.webContents.send('logout-failure', err);
+    if (err.includes('Could not reach')) {
+      mainWindow.webContents.send('disconnected');
+    }
   }
 }
 

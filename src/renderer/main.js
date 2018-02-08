@@ -49,3 +49,8 @@ ipc.on('login-failure', (event, err) => {
 ipc.on('logout-failure', (event, err) => {
   vm.$notify(err);
 });
+
+ipc.on('disconnected', () => {
+  vm.loggedIn = false;
+  vm.username = undefined;
+});
