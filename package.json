@@ -1,6 +1,6 @@
 {
   "name": "harbor",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "author": "Ujjwal Sharma <usharma1998@gmail.com>",
   "description": "A cyberoam client built on web technologies",
   "license": "MIT",
@@ -14,10 +14,8 @@
     "lint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src",
     "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
     "pack": "npm run pack:main && npm run pack:renderer",
-    "pack:main":
-      "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
-    "pack:renderer":
-      "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
+    "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
+    "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "postinstall": "npm run lint:fix"
   },
   "build": {
@@ -26,7 +24,9 @@
     "directories": {
       "output": "build"
     },
-    "files": ["dist/electron/**/*"],
+    "files": [
+      "dist/electron/**/*"
+    ],
     "dmg": {
       "contents": [
         {
