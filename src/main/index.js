@@ -132,41 +132,41 @@ app.on('activate', () => {
 let liveInterval;
 const cyberoam = new Cyberoam();
 
-function live(username, callback) {
-  cyberoam.checkLiveStatus(username).catch(callback);
+async function live(username, callback) {
+  try {
+    await cyberoam.checkLiveStatus(username);
+  } catch (err) {
+    callback();
+  }
 }
 
-function login(username, password) {
-  cyberoam
-    .login(username, password)
-    .then(() => {
-      liveInterval = setInterval(() => {
-        live(username, () => {
-          login(username, password);
-        });
-      }, 180 * 1000);
-      mainWindow.webContents.send('logged-in', username);
-    })
-    .catch((err) => {
-      mainWindow.webContents.send('login-failure', err);
-    });
+async function login(username, password) {
+  try {
+    await cyberoam.login(username, password);
+    liveInterval = setInterval(() => {
+      live(username, () => {
+        login(username, password);
+      });
+    }, 180 * 1000);
+    mainWindow.webContents.send('logged-in', username);
+  } catch (err) {
+    mainWindow.webContents.send('login-failure', err);
+  }
 }
 
-function logout(username) {
-  cyberoam
-    .logout(username)
-    .then(() => {
-      if (liveInterval !== undefined) {
-        clearInterval(liveInterval);
-        liveInterval = undefined;
-        mainWindow.webContents.send('logged-out');
-      } else {
-        throw Error('Live interval not properly set');
-      }
-    })
-    .catch((err) => {
-      mainWindow.webContents.send('logout-failure', err);
-    });
+async function logout(username) {
+  try {
+    await cyberoam.logout(username);
+    if (liveInterval !== undefined) {
+      clearInterval(liveInterval);
+      liveInterval = undefined;
+      mainWindow.webContents.send('logged-out');
+    } else {
+      throw Error('Live interval not properly set');
+    }
+  } catch (err) {
+    mainWindow.webContents.send('logout-failure', err);
+  }
 }
 
 ipc.on('login', (event, { username, password }) => login(username, password));
