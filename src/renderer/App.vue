@@ -74,7 +74,7 @@ input[type='submit']:hover {
   font-size: 18px;
   font-family: sans-serif;
   color: white;
-  background: transparent;
+  background: transparent !important;
   border: 2px solid white;
   border-radius: 5px;
 }
