@@ -30,7 +30,7 @@ install:
 - npm install -g xvfb-maybe
 - yarn
 script:
-- yarn run build
+- yarn run build && ls build
 branches:
   only:
   - master
@@ -40,10 +40,10 @@ deploy:
   api_key:
     secure: zX2AYP9x8i/xcjs0PErO4Nn6eXa/aFEVoBzaG81ZsPp1lLPSm9RWnHcvtwCOrWSlCbfw2ou9yeKwU6u2HXS//UL/5rlqEtnDDIYYwFuPTMwcmRlAUzevHUVXyH1mqUl0oDzLpeiSCq2WMpFM6yUWiWpEGfC60a/Kws7fCeQk4xgf/HNrEwVhVpuQGV5/zxF1qzFXTIJBp4HeoQJ39Bnc9lwJE763jFfdFmU3xuFKgbpwC9QMvepHsuuZ+WqvsqEhEfH8bnlFHVE/wIEj6Af+J4wjrl72VLIMOltvyBcsxuc5o5AePw5S/Ehaxw5JgOdSiBF0ZJSG7xe6BGw4oXMmyd34i2pLQbkT7eF7Y99AfL+pPJ5vVjFyL+g0DWYDDRm07NyJFf6io9H3qW1338YSvq2C0VgZ7b8OHk/3hL6Cp6Innbw0HGAQukuYP1dqi+aWgX/sJpx9fedAjQosXdgpVNAhrGKTzCyhhLvJHswPNudO1GLUjKpdBTRwooLfTGRPgrZMttF1A2KT2YpUULTfvziO4929/0dV66ToZhkbO/+gQkuhtxJzR0Rw6pa1Z1fje+HZqBlaUQlQt2ndeviOJ+b8jZldNlczJ1wgzI8ApTmfy5ODwtnIlXI+Bposriw4pmizo6kUb6oGKYtwQkx163cp+jFKJ3jiJpXNzoAn2UA=
   file:
-    - dist/*.AppImage
-    - dist/*.dmg
-    - dist/*.zip
-    - dist/*.exe
+    - build/*.AppImage
+    - build/*.dmg
+    - build/*.zip
+    - build/*.exe
   file_glob: true
   skip_cleanup: true
   on:
