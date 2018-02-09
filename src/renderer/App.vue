@@ -1,7 +1,14 @@
 <template>
-  <div>
-    <logout v-if="loggedIn" :username="username" @logout="handleLogout"></logout>
-    <login v-else @login="handleLogin"></login>
+  <div class="container" :class="position">
+    <div class="left">
+      <h1>hello world</h1>
+    </div>
+    <div class="centre">
+      <logout v-if="loggedIn" :username="username" @logout="handleLogout"></logout>
+      <login v-else @login="handleLogin"></login>
+      <img v-if="position === 'm-left'" src="static/ic_close_white_24px.svg" alt="Close" class="img-left" @click="setCentre">
+      <img v-else src="static/ic_info_white_24px.svg" alt="Info" class="img-left" @click="setLeft">
+    </div>
     <notifications classes="notification" />
   </div>
 </template>
@@ -16,6 +23,11 @@ export default {
     Login,
     Logout,
   },
+  data() {
+    return {
+      position: 'm-centre',
+    };
+  },
   props: ['loggedIn', 'username'],
   methods: {
     handleLogin(data) {
@@ -23,6 +35,12 @@ export default {
     },
     handleLogout() {
       this.$emit('logout');
+    },
+    setLeft() {
+      this.position = 'm-left';
+    },
+    setCentre() {
+      this.position = 'm-centre';
     },
   },
 };
@@ -32,6 +50,36 @@ export default {
 * {
   box-sizing: border-box;
   margin: 0;
+}
+
+.container {
+  display: flex;
+  transition: all 0.5s ease-in-out;
+}
+
+.container.m-centre {
+  transform: translateX(-320px);
+}
+
+.container.m-left {
+  transform: translateX(0);
+}
+
+.left {
+  min-width: 320px;
+  background: white;
+}
+
+.centre {
+  min-width: 100vw;
+}
+
+.centre .img-left {
+  position: absolute;
+  left: 335px;
+  bottom: 15px;
+  width: 35px;
+  height: 35px;
 }
 
 form {
