@@ -1,7 +1,13 @@
 <template>
   <div class="container" :class="position">
     <div class="left">
-      <h1>hello world</h1>
+      <h1>Ujjwal Sharma</h1>
+      <p>Web Developer · Security Enthusiast · FOSS Freak · Google Summer of Code 2017 <a href="#">@publiclab</a> · INTP-T · He/Him · <a href="#">#react</a> <a href="#">#vuejs</a> <a href="#">#electron</a> <a href="#">#rails</a> <a href="#">#nodejs</a></p>
+      <div class="social">
+        <img src="static/github.svg" alt="GitHub">
+        <img src="static/linkedin.svg" alt="LinkedIn">
+        <img src="static/twitter.svg" alt="Twitter">
+      </div>
     </div>
     <div class="centre">
       <logout v-if="loggedIn" :username="username" @logout="handleLogout"></logout>
@@ -50,6 +56,8 @@ export default {
 * {
   box-sizing: border-box;
   margin: 0;
+  font-family: sans-serif;
+  font-weight: 400;
 }
 
 .container {
@@ -58,7 +66,7 @@ export default {
 }
 
 .container.m-centre {
-  transform: translateX(-320px);
+  transform: translateX(-350px);
 }
 
 .container.m-left {
@@ -66,8 +74,18 @@ export default {
 }
 
 .left {
-  min-width: 320px;
+  min-width: 350px;
   background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 15px;
+}
+
+.left > h1 {
+  font-size: 38px;
 }
 
 .centre {
@@ -76,10 +94,8 @@ export default {
 
 .centre .img-left {
   position: absolute;
-  left: 335px;
+  left: 365px;
   bottom: 15px;
-  width: 35px;
-  height: 35px;
 }
 
 form {
@@ -125,5 +141,23 @@ input[type='submit']:hover {
   background: transparent !important;
   border: 2px solid white;
   border-radius: 5px;
+}
+
+.left > p {
+  margin: 30px;
+}
+
+img {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+}
+
+img {
+  transition: transform 0.2s ease-in-out;
+}
+
+img:hover {
+  transform: scale(1.3);
 }
 </style>
