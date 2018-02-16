@@ -2,8 +2,10 @@
   <div class="container" :class="position">
     <div class="left">
       <h1>Ujjwal Sharma</h1>
+      <h2><small>@ryzokuken</small></h2>
       <p>Web Developer · Security Enthusiast · FOSS Freak · Google Summer of Code 2017 <a href="#">@publiclab</a> · INTP-T · He/Him · <a href="#">#react</a> <a href="#">#vuejs</a> <a href="#">#electron</a> <a href="#">#rails</a> <a href="#">#nodejs</a></p>
       <div class="social">
+        <img src="static/ic_language_black_24px.svg" alt="Website">
         <img src="static/github.svg" alt="GitHub">
         <img src="static/linkedin.svg" alt="LinkedIn">
         <img src="static/twitter.svg" alt="Twitter">
