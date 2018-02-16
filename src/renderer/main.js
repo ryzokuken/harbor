@@ -1,5 +1,5 @@
 /* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
-import { ipcRenderer as ipc } from 'electron';
+import { ipcRenderer as ipc, shell } from 'electron';
 import Vue from 'vue';
 
 import Notifications from 'vue-notification';
@@ -13,7 +13,7 @@ Vue.use(Notifications);
 const vm = new Vue({
   components: { App },
   template:
-    '<App :loggedIn="loggedIn" :username="username" @login="handleLogin" @logout="handleLogout" />',
+    '<App :loggedIn="loggedIn" :username="username" @login="handleLogin" @logout="handleLogout" @link="handleLink" />',
   data: {
     loggedIn: false,
     username: undefined,
@@ -24,6 +24,9 @@ const vm = new Vue({
     },
     handleLogout() {
       ipc.send('logout', this.username);
+    },
+    handleLink(url) {
+      shell.openExternal(url);
     },
   },
 }).$mount('#app');
