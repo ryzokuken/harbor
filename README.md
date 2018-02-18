@@ -2,6 +2,9 @@
 
 > A cyberoam client built on web technologies
 
+[![Build Status](https://travis-ci.org/ryzokuken/harbor.svg?branch=master)](https://travis-ci.org/ryzokuken/harbor)
+[![Build status](https://ci.appveyor.com/api/projects/status/0fc3t014yu1eswt0/branch/master?svg=true)](https://ci.appveyor.com/project/ryzokuken/harbor-ajonj/branch/master)
+
 #### Build Setup
 
 ``` bash
