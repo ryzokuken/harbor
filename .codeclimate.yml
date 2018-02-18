@@ -1,0 +1,4 @@
+exclude_patterns:
+- ".electron-vue/*"
+- "build/*"
+- "dist/*"
