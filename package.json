@@ -19,7 +19,7 @@
     "pack:renderer":
       "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "postinstall": "npm run lint:fix",
-    "build:publish": "node .electron-vue/build.js && electron-builder --publish always"
+    "build:publish": "node .electron-vue/build.js && electron-builder --publish"
   },
   "build": {
     "productName": "Harbor",

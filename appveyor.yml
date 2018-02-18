@@ -1,5 +1,3 @@
-skip_non_tags: true
-
 image: Visual Studio 2017
 platform:
   - x64
@@ -23,7 +21,3 @@ build_script:
   - yarn build:publish
 
 test: off
-
-# artifacts:
-#   - path: 'build\*.exe'
-#   - path: 'build\latest.yml'
