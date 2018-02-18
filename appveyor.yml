@@ -20,7 +20,7 @@ install:
   - node --version
 
 build_script:
-  - yarn build
+  - yarn publish
 
 test: off
 
