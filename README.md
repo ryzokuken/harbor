@@ -4,6 +4,7 @@
 
 [![Build Status](https://travis-ci.org/ryzokuken/harbor.svg?branch=master)](https://travis-ci.org/ryzokuken/harbor)
 [![Build status](https://ci.appveyor.com/api/projects/status/0fc3t014yu1eswt0/branch/master?svg=true)](https://ci.appveyor.com/project/ryzokuken/harbor-ajonj/branch/master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/407aecee4a5d0d818d7b/maintainability)](https://codeclimate.com/github/ryzokuken/harbor/maintainability)
 
 #### Build Setup
 
