@@ -153,7 +153,7 @@ input[type='submit']:hover {
   padding: 10px;
   margin: 10px 10px 0;
 
-  font-size: 18px;
+  font-size: 14px;
   font-family: sans-serif;
   color: white;
   background: transparent !important;
