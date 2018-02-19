@@ -5,10 +5,10 @@
       <h2><small>@ryzokuken</small></h2>
       <p>Web Developer · Security Enthusiast · FOSS Freak · Google Summer of Code 2017 <a href="#">@publiclab</a> · INTP-T · He/Him · <a href="#">#react</a> <a href="#">#vuejs</a> <a href="#">#electron</a> <a href="#">#rails</a> <a href="#">#nodejs</a></p>
       <div class="social">
-        <img src="static/ic_language_black_24px.svg" alt="Website" @click="() => { handleSocial('website') }">
-        <img src="static/github.svg" alt="GitHub" @click="() => { handleSocial('github') }">
-        <img src="static/linkedin.svg" alt="LinkedIn" @click="() => { handleSocial('linkedin') }">
-        <img src="static/twitter.svg" alt="Twitter" @click="() => { handleSocial('twitter') }">
+        <img src="static/ic_language_black_24px.svg" alt="Website" @click="handleSocial('website')">
+        <img src="static/github.svg" alt="GitHub" @click="handleSocial('github')">
+        <img src="static/linkedin.svg" alt="LinkedIn" @click="handleSocial('linkedin')">
+        <img src="static/twitter.svg" alt="Twitter" @click="handleSocial('twitter')">
       </div>
     </div>
     <div class="centre">
