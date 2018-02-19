@@ -80,6 +80,7 @@ export default {
 .container {
   display: flex;
   transition: all 0.5s ease-in-out;
+  width: calc(100% + 350px);
 }
 
 .container.m-centre {
