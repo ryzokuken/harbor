@@ -20,6 +20,7 @@ function createWindow() {
     useContentSize: true,
     width: 600,
     titleBarStyle: 'hiddenInset',
+    autoHideMenuBar: true,
   });
 
   mainWindow.loadURL(winURL);
