@@ -77,6 +77,10 @@ export default {
   font-weight: 400;
 }
 
+body {
+  overflow: hidden;
+}
+
 .container {
   display: flex;
   transition: all 0.5s ease-in-out;
